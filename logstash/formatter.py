@@ -23,9 +23,9 @@ class LogstashFormatterBase(logging.Formatter):
         def value_repr(value):
             easy_types = (str, bool, float, int, type(None))
 
-            if isinstance(dict, value):
+            if isinstance(value, dict):
                 return {k: value_repr(v) for k, v in value.items()}
-            elif isinstance(list, value):
+            elif isinstance(value, list):
                 return [value_repr(v) for v in value]
             elif isinstance(value, (datetime, date)):
                 return self.format_timestamp(time.mktime(value.timetuple()))
