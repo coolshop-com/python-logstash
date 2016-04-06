@@ -33,7 +33,7 @@ class LogstashFormatterBase(logging.Formatter):
             elif isinstance(value, Decimal):
                 return float(str(value))
             elif isinstance(value, uuid.UUID):
-                return value.hex()
+                return value.hex
             elif isinstance(value, easy_types):
                 return value
             else:
