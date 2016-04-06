@@ -4,6 +4,7 @@ import socket
 import sys
 import time
 import traceback
+import uuid
 from datetime import date, datetime
 from decimal import Decimal
 
@@ -31,6 +32,8 @@ class LogstashFormatterBase(logging.Formatter):
                 return self.format_timestamp(time.mktime(value.timetuple()))
             elif isinstance(value, Decimal):
                 return float(str(value))
+            elif isinstance(value, uuid.UUID):
+                return value.hex()
             elif isinstance(value, easy_types):
                 return value
             else:
